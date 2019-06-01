@@ -16,6 +16,7 @@ Imports:
     httr,
     purrr,
     crayon,
+    tibble,
     progress,
     magrittr,
     assertthat

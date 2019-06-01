@@ -2,6 +2,23 @@
 #'
 #' Get Best Sellers list. If no date is provided returns the latest list.
 #' 
+#' @param list A \code{list_name_encoded} as returned by \code{ny_book_names}.
+#' @param bestsellers_date The week-ending date for the sales reflected on \code{list-name}. 
+#' Times best sellers lists are compiled using available book sale data. 
+#' The \code{bestsellers_date} may be significantly earlier than published-date. 
+#' For additional information, see the explanation at the bottom of any best-seller list page on NYTimes.com 
+#' (example: Hardcover Fiction, published Dec. 5 but reflecting sales to Nov. 29).
+#' @param published_date The date the best sellers list was published on NYTimes.com 
+#' (different than bestsellers-date). Use "current" for latest list.
+#' @param pages Number of pages of results to return.
+#' 
+#' @examples
+#' \dontrun{
+#' nytimes_key("xXXxxXxXxXXx")
+#' books <- ny_book_names()
+#' list <- ny_book_list(sample(books$list_name_encoded, 1))
+#' }
+#' 
 #' @name book_list
 #' @export
 ny_book_list <- function(list, bestsellers_date = NULL, published_date = NULL, pages = 1){
@@ -20,15 +37,23 @@ ny_book_list <- function(list, bestsellers_date = NULL, published_date = NULL, p
   p <- 0
   results <- 0
   content <- list()
+  pb <- progress::progress_bar$new(
+    format = "  downloading [:bar] :percent",
+    total = pages, clear = FALSE, width = 60
+  )
+
   while(p < pages){
-    opts$offset <- (pages - 1) * 20
+    if(pages > 1)
+      pb$tick()
+    opts$offset <- p * 20
+    print(p * 20)
     parsed_url$query <- opts
     url <- build_url(parsed_url)
     response <- GET(url)
     stop_for_status(response)
     page_content <- content(response)
     content <- append(content, list(page_content$results))
-    results <- results <- page_content$num_results
+    results <- results + page_content$num_results
     p <- p + 1
   }
 

@@ -73,6 +73,8 @@ ny_search <- function(q, since = NULL, until = NULL, pages = 1, sort = c("newest
       break
   }
 
+  pb$terminate()
+
   content %>% 
     map("response") %>% 
     transpose()

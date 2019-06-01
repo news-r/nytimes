@@ -2,6 +2,8 @@
 
 export("%>%")
 export(ny_archive)
+export(ny_book_list)
+export(ny_book_names)
 export(ny_search)
 export(nytimes_key)
 import(assertthat)
