@@ -7,8 +7,14 @@ BASE_URL <- "https://api.nytimes.com"
   return(key)
 }
 
-.process_date <- function(x){
+.process_search_date <- function(x){
   if(!is.null(x))
     x <- format(x, "%Y%m%d")
+  return(x)
+}
+
+.process_book_date <- function(x){
+  if(!is.null(x))
+    x <- format(x, "%Y-%m-%d")
   return(x)
 }
