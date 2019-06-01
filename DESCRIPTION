@@ -12,7 +12,11 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
+    cli,
     httr,
-    assertthat,
-    magrittr
+    purrr,
+    crayon,
+    progress,
+    magrittr,
+    assertthat
 RoxygenNote: 6.1.1

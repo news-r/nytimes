@@ -11,6 +11,7 @@
 #' nytimes_key("xXXxxXxXxXXx")  
 #' }
 #' 
+#' @import purrr
 #' @import httr
 #' @import assertthat
 #' 
