@@ -152,9 +152,9 @@ ny_book_overview <- function(published_date = NULL){
   content$results 
 }
 
-#' History
+#' History & Reviews
 #'
-#' Get Best Sellers list history.
+#' Get Best Sellers list history and book reviews.
 #'
 #' @param age_group The target age group for the best seller.
 #' @param author The author of the best seller. 
@@ -173,6 +173,7 @@ ny_book_overview <- function(published_date = NULL){
 #' @param title The title of the best seller. 
 #' When searching, you can specify a portion of a title or a full title.
 #'
+#' @name history
 #' @export
 ny_book_history <- function(age_group = NULL, author = NULL, contributor = NULL, isbn = NULL, pages = 1, price = NULL, publisher = NULL, title = NULL){
   
@@ -215,4 +216,26 @@ ny_book_history <- function(age_group = NULL, author = NULL, contributor = NULL,
   cat(crayon::blue(cli::symbol$info), results, "results returned\n")
   
   return(content)
+}
+
+#' @rdname history
+#' @export
+ny_book_reviews <- function(isbn = NULL, title = NULL, author = NULL){
+
+  url <- parse_url(BASE_URL)
+  url$path <- c("svc", "books", "v3", "reviews.json")
+  url$query <- list(
+    isbn = isbn,
+    title = title,
+    author = author,
+    `api-key` = .get_key()
+  )
+  url <- build_url(url)
+  
+  response <- GET(url)
+  stop_for_status(response)
+  content <- content(response)
+  cat(crayon::blue(cli::symbol$info), content$num_results, "results returned\n")
+  
+  content$results 
 }
