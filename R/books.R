@@ -46,7 +46,6 @@ ny_book_list <- function(list, bestsellers_date = NULL, published_date = NULL, p
     if(pages > 1)
       pb$tick()
     opts$offset <- p * 20
-    print(p * 20)
     parsed_url$query <- opts
     url <- build_url(parsed_url)
     response <- GET(url)
@@ -54,6 +53,7 @@ ny_book_list <- function(list, bestsellers_date = NULL, published_date = NULL, p
     page_content <- content(response)
     content <- append(content, list(page_content$results))
     results <- results + page_content$num_results
+    if(p > 1) Sys.sleep(6)
     p <- p + 1
   }
 
@@ -85,7 +85,6 @@ ny_book_date_list <- function(list, published_date = NULL, pages = 1){
     if(pages > 1)
       pb$tick()
     opts$offset <- p * 20
-    print(p * 20)
     parsed_url$query <- opts
     url <- build_url(parsed_url)
     response <- GET(url)
@@ -93,6 +92,7 @@ ny_book_date_list <- function(list, published_date = NULL, pages = 1){
     page_content <- content(response)
     content <- append(content, list(page_content$results))
     results <- results + page_content$num_results
+    if(p > 1) Sys.sleep(6)
     p <- p + 1
   }
 
@@ -150,4 +150,69 @@ ny_book_overview <- function(published_date = NULL){
   cat(crayon::blue(cli::symbol$info), content$num_results, "results returned\n")
   
   content$results 
+}
+
+#' History
+#'
+#' Get Best Sellers list history.
+#'
+#' @param age_group The target age group for the best seller.
+#' @param author The author of the best seller. 
+#' The author field does not include additional contributors 
+#' (see Data Structure for more details about the author and contributor fields). 
+#' When searching the author field, you can specify any combination of first, middle and last names.
+#' @param contributor The author of the best seller, as well as other contributors such as the illustrator 
+#' (to search or sort by author name only, use author instead).
+#' When searching, you can specify any combination of first, middle and last names of any of the contributors.
+#' @param isbn nternational Standard Book Number, 10 or 13 digits. 
+#' A best seller may have both 10-digit and 13-digit ISBNs, and may have multiple ISBNs of each type. 
+#' To search on multiple ISBNs, separate the ISBNs with semicolons (example: 9780446579933;0061374229).
+#' @param pages Number of pages of results to return.
+#' @param price The publisher's list price of the best seller, including decimal point.
+#' @param publisher The standardized name of the publisher.
+#' @param title The title of the best seller. 
+#' When searching, you can specify a portion of a title or a full title.
+#'
+#' @export
+ny_book_history <- function(age_group = NULL, author = NULL, contributor = NULL, isbn = NULL, pages = 1, price = NULL, publisher = NULL, title = NULL){
+  
+  parsed_url <- parse_url(BASE_URL)
+  parsed_url$path <- c("svc", "books", "v3", "lists", "best-sellers", "history.json")
+  opts <- list(
+    `age-group` = age_group,
+    author = author,
+    contributor = contributor,
+    isbn = isbn,
+    price = price,
+    publisher = publisher,
+    title = title,
+    `api-key` = .get_key()
+  )
+
+  p <- 0
+  results <- 0
+  content <- list()
+  pb <- progress::progress_bar$new(
+    format = "  downloading [:bar] :percent",
+    total = pages, clear = FALSE, width = 60
+  )
+
+  while(p < pages){
+    if(pages > 1)
+      pb$tick()
+    opts$offset <- p * 20
+    parsed_url$query <- opts
+    url <- build_url(parsed_url)
+    response <- GET(url)
+    stop_for_status(response)
+    page_content <- content(response)
+    content <- append(content, list(page_content$results))
+    results <- results + page_content$num_results
+    if(p > 1) Sys.sleep(6)
+    p <- p + 1
+  }
+
+  cat(crayon::blue(cli::symbol$info), results, "results returned\n")
+  
+  return(content)
 }

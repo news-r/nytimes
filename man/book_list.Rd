@@ -3,11 +3,14 @@
 \name{book_list}
 \alias{book_list}
 \alias{ny_book_list}
+\alias{ny_book_date_list}
 \alias{ny_book_names}
 \title{Book List}
 \usage{
 ny_book_list(list, bestsellers_date = NULL, published_date = NULL,
   pages = 1)
+
+ny_book_date_list(list, published_date = NULL, pages = 1)
 
 ny_book_names()
 }
