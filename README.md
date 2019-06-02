@@ -87,7 +87,6 @@ viewed <- ny_popular_viewed(7)
 
 The movie review API
 
-
 ```r
 # get 2 pages of moview reviews on wars
 reviews <- ny_movie_search("wars", pages = 2)

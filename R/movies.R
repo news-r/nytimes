@@ -118,7 +118,6 @@ ny_movie_search <- function(q, picks = FALSE, pages = 1, opening_since = NULL, o
     content <- append(content, list(page_content))
 
     # check if results left
-    hits <- page_content$response$meta$hits
     offset <- offset + 20
     if(p != 1) {
       pb$tick()
