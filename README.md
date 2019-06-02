@@ -25,7 +25,7 @@ remotes::install_github("news-r/nytimes")
 - [x] [Books](https://developer.nytimes.com/docs/books-product/1/overview)
 - [x] [Geo](https://developer.nytimes.com/docs/geo-product/1/overview)
 - [x] [Most Popular](https://developer.nytimes.com/docs/most-popular-product/1/overview)
-- [ ] [Most Reviews](https://developer.nytimes.com/docs/movie-reviews-api/1/overview)
+- [x] [Movie Reviews](https://developer.nytimes.com/docs/movie-reviews-api/1/overview)
 - [ ] [Semantic](https://developer.nytimes.com/docs/semantic-api-product/1/overview)
 - [ ] [Times Tags](https://developer.nytimes.com/docs/timestags-product/1/overview)
 - [ ] [Times Wire](https://developer.nytimes.com/docs/timeswire-product/1/overview)
@@ -80,7 +80,15 @@ The most popular API
 
 
 ```r
-# get most viewed articles
-viewed <- ny_popular_viewed(2)
-#> Error: `period` argument accepts 1, 7, or 30
+# get most viewed articles in the last 7 days
+viewed <- ny_popular_viewed(7)
+#> ℹ 1727 results returned
+```
+
+The movie review API
+
+
+```r
+# get 2 pages of moview reviews on wars
+reviews <- ny_movie_search("wars", pages = 2)
 ```

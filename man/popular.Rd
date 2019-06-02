@@ -38,7 +38,7 @@ Provides services for getting the most popular articles on NYTimes.com based on 
 \examples{
 \dontrun{
 nytimes_key("xXXxxXxXxXXx")
-emailed <- ny_popular_email(2)
+emailed <- ny_popular_emailed(7)
 }
 
 }

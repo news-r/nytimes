@@ -16,7 +16,7 @@
 #' @examples
 #' \dontrun{
 #' nytimes_key("xXXxxXxXxXXx")
-#' emailed <- ny_popular_emailed(2)
+#' emailed <- ny_popular_emailed(7)
 #' }
 #' 
 #' @name popular
