@@ -26,7 +26,7 @@ remotes::install_github("news-r/nytimes")
 - [x] [Geo](https://developer.nytimes.com/docs/geo-product/1/overview)
 - [x] [Most Popular](https://developer.nytimes.com/docs/most-popular-product/1/overview)
 - [x] [Movie Reviews](https://developer.nytimes.com/docs/movie-reviews-api/1/overview)
-- [ ] [Semantic](https://developer.nytimes.com/docs/semantic-api-product/1/overview)
+- [x] [Semantic](https://developer.nytimes.com/docs/semantic-api-product/1/overview)
 - [ ] [Times Tags](https://developer.nytimes.com/docs/timestags-product/1/overview)
 - [ ] [Times Wire](https://developer.nytimes.com/docs/timeswire-product/1/overview)
 - [ ] [Top Stories](https://developer.nytimes.com/docs/top-stories-product/1/overview)
@@ -60,7 +60,7 @@ The article search API.
 ```r
 # get all articles on Obama that have been published in the last 3 days, get three pages of results
 obama <- ny_search("Obama", since = Sys.Date() - 3, pages = 3)
-#> ℹ 55 results available
+#> ℹ 57 results available
 #> 
   downloading [=======================================] 100%
 ```
@@ -87,7 +87,19 @@ viewed <- ny_popular_viewed(7)
 
 The movie review API
 
+
 ```r
-# get 2 pages of moview reviews on wars
-reviews <- ny_movie_search("wars", pages = 2)
+# get 2 pages of movie reviews on war
+reviews <- ny_movie_search("war", pages = 2)
+#> ⚠ More results available
+```
+
+The semantic API
+
+
+```r
+# get 2 pages of movie reviews on war
+concepts <- ny_semantic_search("war")
+#> ℹ 500 results available
+#> ⚠ More results available
 ```
