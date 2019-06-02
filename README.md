@@ -27,9 +27,9 @@ remotes::install_github("news-r/nytimes")
 - [x] [Most Popular](https://developer.nytimes.com/docs/most-popular-product/1/overview)
 - [x] [Movie Reviews](https://developer.nytimes.com/docs/movie-reviews-api/1/overview)
 - [x] [Semantic](https://developer.nytimes.com/docs/semantic-api-product/1/overview)
-- [ ] [Times Tags](https://developer.nytimes.com/docs/timestags-product/1/overview)
+- [x] [Times Tags](https://developer.nytimes.com/docs/timestags-product/1/overview)
 - [ ] [Times Wire](https://developer.nytimes.com/docs/timeswire-product/1/overview)
-- [ ] [Top Stories](https://developer.nytimes.com/docs/top-stories-product/1/overview)
+- [x] [Top Stories](https://developer.nytimes.com/docs/top-stories-product/1/overview)
 
 ## Setup
 
@@ -73,7 +73,7 @@ The books API
 books <- ny_book_names()
 #> ℹ 55 results returned
 list <- ny_book_list(sample(books$list_name_encoded, 1))
-#> ℹ 10 results returned
+#> ℹ 15 results returned
 ```
 
 The most popular API
@@ -112,4 +112,10 @@ ny_tags("Trump", max = 6)
 #> [1] "Trump, Donald J (Per)"    "Trump Organization (Org)"
 #> [3] "Trump, Ivanka (Per)"      "Trump, Melania (Per)"    
 #> [5] "Trump, Donald J Jr (Per)" "Wallace, George C (Per)"
+```
+
+Top stories API
+
+```r
+business <- ny_stories("business")
 ```
