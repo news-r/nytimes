@@ -17,6 +17,7 @@ Imports:
     purrr,
     crayon,
     tibble,
+    jsonlite,
     progress,
     magrittr,
     assertthat

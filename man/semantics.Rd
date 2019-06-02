@@ -8,7 +8,7 @@
 \usage{
 ny_semantic_search(q, pages = 1, fields = "all")
 
-ny_semantic_concept(concept, q, type = c("nytd_geo", "nytd_per",
+ny_semantic_concept(concept, q = NULL, type = c("nytd_geo", "nytd_per",
   "nytd_org", "nytd_des"), fields = "all")
 }
 \arguments{
@@ -52,7 +52,7 @@ Valid values for the \code{fields} argument and they explanation.
 \dontrun{
 nytimes_key("xXXxxXxXxXXx")
 war <- ny_semantic_search("war")
-war <- ny_semantic_concept("baseball", "ball", "nytd_des")
+war <- ny_semantic_concept("baseball", type = "nytd_des")
 }
 
 }

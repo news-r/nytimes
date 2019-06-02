@@ -38,9 +38,9 @@ remotes::install_github("news-r/nytimes")
 - [x] [Most Popular](https://developer.nytimes.com/docs/most-popular-product/1/overview)
 - [x] [Movie Reviews](https://developer.nytimes.com/docs/movie-reviews-api/1/overview)
 - [x] [Semantic](https://developer.nytimes.com/docs/semantic-api-product/1/overview)
-- [ ] [Times Tags](https://developer.nytimes.com/docs/timestags-product/1/overview)
+- [x] [Times Tags](https://developer.nytimes.com/docs/timestags-product/1/overview)
 - [ ] [Times Wire](https://developer.nytimes.com/docs/timeswire-product/1/overview)
-- [ ] [Top Stories](https://developer.nytimes.com/docs/top-stories-product/1/overview)
+- [x] [Top Stories](https://developer.nytimes.com/docs/top-stories-product/1/overview)
 
 ## Setup
 
@@ -97,4 +97,16 @@ The semantic API
 ```{r}
 # get 2 pages of movie reviews on war
 concepts <- ny_semantic_search("war")
+```
+
+Times tags API
+
+```{r}
+ny_tags("Trump", max = 6)
+```
+
+Top stories API
+
+```r
+business <- ny_stories("business")
 ```

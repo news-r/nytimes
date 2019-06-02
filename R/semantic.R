@@ -33,7 +33,7 @@
 #' \dontrun{
 #' nytimes_key("xXXxxXxXxXXx")
 #' war <- ny_semantic_search("war")
-#' war <- ny_semantic_concept("baseball", "ball", "nytd_des")
+#' war <- ny_semantic_concept("baseball", type = "nytd_des")
 #' }
 #' 
 #' @name semantics
@@ -99,9 +99,8 @@ ny_semantic_search <- function(q, pages = 1, fields = "all") {
 
 #' @rdname semantics
 #' @export
-ny_semantic_concept <- function(concept, q, type = c("nytd_geo", "nytd_per", "nytd_org", "nytd_des"), fields = "all"){
+ny_semantic_concept <- function(concept, q = NULL, type = c("nytd_geo", "nytd_per", "nytd_org", "nytd_des"), fields = "all"){
   assert_that(!missing(concept), msg = "Missing concept")
-  assert_that(!missing(q), msg = "Missing q")
   fields <- paste0(fields, collapse = ",")
   concept <- paste0(concept, ".json")
   url <- parse_url(BASE_URL)

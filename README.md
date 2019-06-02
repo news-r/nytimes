@@ -60,7 +60,7 @@ The article search API.
 ```r
 # get all articles on Obama that have been published in the last 3 days, get three pages of results
 obama <- ny_search("Obama", since = Sys.Date() - 3, pages = 3)
-#> ℹ 57 results available
+#> ℹ 59 results available
 #> 
   downloading [=======================================] 100%
 ```
@@ -102,4 +102,14 @@ The semantic API
 concepts <- ny_semantic_search("war")
 #> ℹ 500 results available
 #> ⚠ More results available
+```
+
+Times tags API
+
+
+```r
+ny_tags("Trump", max = 6)
+#> [1] "Trump, Donald J (Per)"    "Trump Organization (Org)"
+#> [3] "Trump, Ivanka (Per)"      "Trump, Melania (Per)"    
+#> [5] "Trump, Donald J Jr (Per)" "Wallace, George C (Per)"
 ```
