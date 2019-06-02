@@ -23,8 +23,8 @@ remotes::install_github("news-r/nytimes")
 - [x] [Archive](https://developer.nytimes.com/docs/archive-product/1/overview) 
 - [x] [Article Search](https://developer.nytimes.com/docs/articlesearch-product/1/overview)
 - [x] [Books](https://developer.nytimes.com/docs/books-product/1/overview)
-- [ ] [Geo](https://developer.nytimes.com/docs/geo-product/1/overview)
-- [ ] [Most Popular](https://developer.nytimes.com/docs/most-popular-product/1/overview)
+- [x] [Geo](https://developer.nytimes.com/docs/geo-product/1/overview)
+- [x] [Most Popular](https://developer.nytimes.com/docs/most-popular-product/1/overview)
 - [ ] [Most Reviews](https://developer.nytimes.com/docs/movie-reviews-api/1/overview)
 - [ ] [Semantic](https://developer.nytimes.com/docs/semantic-api-product/1/overview)
 - [ ] [Times Tags](https://developer.nytimes.com/docs/timestags-product/1/overview)
@@ -60,7 +60,7 @@ The article search API.
 ```r
 # get all articles on Obama that have been published in the last 3 days, get three pages of results
 obama <- ny_search("Obama", since = Sys.Date() - 3, pages = 3)
-#> ℹ 48 results available
+#> ℹ 55 results available
 #> 
   downloading [=======================================] 100%
 ```
@@ -73,5 +73,14 @@ The books API
 books <- ny_book_names()
 #> ℹ 55 results returned
 list <- ny_book_list(sample(books$list_name_encoded, 1))
-#> ℹ 15 results returned
+#> ℹ 10 results returned
+```
+
+The most popular API
+
+
+```r
+# get most viewed articles
+viewed <- ny_popular_viewed(2)
+#> Error: `period` argument accepts 1, 7, or 30
 ```

@@ -194,7 +194,7 @@ ny_book_history <- function(age_group = NULL, author = NULL, contributor = NULL,
   results <- 0
   content <- list()
   pb <- progress::progress_bar$new(
-    format = "  downloading [:bar] :percent",
+    format = " downloading [:bar] :percent",
     total = pages, clear = FALSE, width = 60
   )
 
