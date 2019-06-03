@@ -24,6 +24,7 @@
 ny_book_list <- function(list, bestsellers_date = NULL, published_date = NULL, pages = 1){
 
   assert_that(!missing(list), msg = "Missing list")
+  assert_that(pages > 0)
   
   parsed_url <- parse_url(BASE_URL)
   parsed_url$path <- c("svc", "books", "v3", "lists.json")
@@ -43,8 +44,7 @@ ny_book_list <- function(list, bestsellers_date = NULL, published_date = NULL, p
   )
 
   while(p < pages){
-    if(pages > 1)
-      pb$tick()
+    pb$tick()
     opts$offset <- p * 20
     parsed_url$query <- opts
     url <- build_url(parsed_url)
@@ -53,13 +53,15 @@ ny_book_list <- function(list, bestsellers_date = NULL, published_date = NULL, p
     page_content <- content(response)
     content <- append(content, list(page_content$results))
     results <- results + page_content$num_results
-    if(p > 1) Sys.sleep(6)
+    if(pages > 0) Sys.sleep(6)
     p <- p + 1
   }
 
+  pb$terminate()
+
   cat(crayon::blue(cli::symbol$info), results, "results returned\n")
   
-  return(content)
+  flatten(content)
 }
 
 #' @rdname book_list

@@ -39,7 +39,7 @@ remotes::install_github("news-r/nytimes")
 - [x] [Movie Reviews](https://developer.nytimes.com/docs/movie-reviews-api/1/overview)
 - [x] [Semantic](https://developer.nytimes.com/docs/semantic-api-product/1/overview)
 - [x] [Times Tags](https://developer.nytimes.com/docs/timestags-product/1/overview)
-- [ ] [Times Wire](https://developer.nytimes.com/docs/timeswire-product/1/overview)
+- [x] [Times Wire](https://developer.nytimes.com/docs/timeswire-product/1/overview)
 - [x] [Top Stories](https://developer.nytimes.com/docs/top-stories-product/1/overview)
 
 ## Setup
@@ -109,4 +109,11 @@ Top stories API
 
 ```r
 business <- ny_stories("business")
+```
+
+Times wire API
+
+```{r}
+sections <- ny_wire_section_list()
+wires <- ny_wire_source(sample(sections$section, 1))
 ```
