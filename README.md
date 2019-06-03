@@ -38,7 +38,7 @@ First, [create an account](https://developer.nytimes.com) to obtain an API key. 
 ```r
 library(nytimes)
 
-ny_key("xXxxX")
+nytimes_key("xXxxX")
 ```
 
 ## Examples
