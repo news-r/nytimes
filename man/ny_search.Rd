@@ -4,9 +4,18 @@
 \alias{ny_search}
 \title{Search}
 \usage{
-ny_search(q, since = NULL, until = NULL, pages = 1,
-  sort = c("newest", "oldest", "relevance"), facets = FALSE,
-  facet_fields = NULL, facet_filter = NULL, fl = NULL, fq = NULL)
+ny_search(
+  q,
+  since = NULL,
+  until = NULL,
+  pages = 1,
+  sort = c("newest", "oldest", "relevance"),
+  facets = FALSE,
+  facet_fields = NULL,
+  facet_filter = NULL,
+  fl = NULL,
+  fq = NULL
+)
 }
 \arguments{
 \item{q}{Search query.}

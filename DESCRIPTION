@@ -1,12 +1,13 @@
 Package: nytimes
 Title: All of 'New York Times APIs'
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: 
-    person(given = "John",
+    c(person(given = "John",
            family = "Coene",
            role = c("aut", "cre"),
            email = "jcoenep@gmail.com",
-           comment = c(ORCID = "0000-0002-6637-4107"))
+           comment = c(ORCID = "0000-0002-6637-4107")),
+      person(family = "news-r", role = "cph"))
 Description: All of 'New York Times APIs'.
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -21,4 +22,4 @@ Imports:
     progress,
     magrittr,
     assertthat
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2

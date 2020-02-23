@@ -8,8 +8,12 @@
 \usage{
 ny_semantic_search(q, pages = 1, fields = "all")
 
-ny_semantic_concept(concept, q = NULL, type = c("nytd_geo", "nytd_per",
-  "nytd_org", "nytd_des"), fields = "all")
+ny_semantic_concept(
+  concept,
+  q = NULL,
+  type = c("nytd_geo", "nytd_per", "nytd_org", "nytd_des"),
+  fields = "all"
+)
 }
 \arguments{
 \item{q}{Precedes the search term string. Used in a Search Query. Except for \code{specific_concept_name}, 

@@ -4,9 +4,20 @@
 \alias{ny_geo}
 \title{Geo}
 \usage{
-ny_geo(name = NULL, longitude = NULL, latitude = NULL, ne = NULL,
-  sw = NULL, elevation = NULL, filter = NULL, since = NULL,
-  until = NULL, facets = FALSE, sort = NULL, pages = 1)
+ny_geo(
+  name = NULL,
+  longitude = NULL,
+  latitude = NULL,
+  ne = NULL,
+  sw = NULL,
+  elevation = NULL,
+  filter = NULL,
+  since = NULL,
+  until = NULL,
+  facets = FALSE,
+  sort = NULL,
+  pages = 1
+)
 }
 \arguments{
 \item{name}{A displayable name for the specified place.}

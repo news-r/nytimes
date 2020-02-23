@@ -6,9 +6,16 @@
 \alias{ny_book_reviews}
 \title{History & Reviews}
 \usage{
-ny_book_history(age_group = NULL, author = NULL, contributor = NULL,
-  isbn = NULL, pages = 1, price = NULL, publisher = NULL,
-  title = NULL)
+ny_book_history(
+  age_group = NULL,
+  author = NULL,
+  contributor = NULL,
+  isbn = NULL,
+  pages = 1,
+  price = NULL,
+  publisher = NULL,
+  title = NULL
+)
 
 ny_book_reviews(isbn = NULL, title = NULL, author = NULL)
 }

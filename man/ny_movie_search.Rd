@@ -4,9 +4,17 @@
 \alias{ny_movie_search}
 \title{Search Movie}
 \usage{
-ny_movie_search(q, picks = FALSE, pages = 1, opening_since = NULL,
-  opening_until = NULL, order = NULL, publication_since = NULL,
-  publication_until = NULL, reviewer = NULL)
+ny_movie_search(
+  q,
+  picks = FALSE,
+  pages = 1,
+  opening_since = NULL,
+  opening_until = NULL,
+  order = NULL,
+  publication_since = NULL,
+  publication_until = NULL,
+  reviewer = NULL
+)
 }
 \arguments{
 \item{q}{Search keyword (e.g. \code{lebowski}).}

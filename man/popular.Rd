@@ -12,8 +12,7 @@ ny_popular_emailed(period = 30)
 
 ny_popular_shared(period = 30)
 
-ny_popular_shared_type(period = 30, type = c("email", "facebook",
-  "twitter"))
+ny_popular_shared_type(period = 30, type = c("email", "facebook", "twitter"))
 
 ny_popular_viewed(period = 30)
 }
