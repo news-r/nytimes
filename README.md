@@ -28,7 +28,7 @@ remotes::install_github("news-r/nytimes")
 - [x] [Movie Reviews](https://developer.nytimes.com/docs/movie-reviews-api/1/overview)
 - [x] [Semantic](https://developer.nytimes.com/docs/semantic-api-product/1/overview)
 - [x] [Times Tags](https://developer.nytimes.com/docs/timestags-product/1/overview)
-- [ ] [Times Wire](https://developer.nytimes.com/docs/timeswire-product/1/overview)
+- [x] [Times Wire](https://developer.nytimes.com/docs/timeswire-product/1/overview)
 - [x] [Top Stories](https://developer.nytimes.com/docs/top-stories-product/1/overview)
 
 ## Setup
@@ -38,7 +38,7 @@ First, [create an account](https://developer.nytimes.com) to obtain an API key. 
 ```r
 library(nytimes)
 
-ny_key("xXxxX")
+nytimes_key("xXxxX")
 ```
 
 ## Examples
@@ -60,7 +60,7 @@ The article search API.
 ```r
 # get all articles on Obama that have been published in the last 3 days, get three pages of results
 obama <- ny_search("Obama", since = Sys.Date() - 3, pages = 3)
-#> ℹ 59 results available
+#> ℹ 49 results available
 #> 
   downloading [=======================================] 100%
 ```
@@ -73,7 +73,7 @@ The books API
 books <- ny_book_names()
 #> ℹ 55 results returned
 list <- ny_book_list(sample(books$list_name_encoded, 1))
-#> ℹ 15 results returned
+#> ℹ 10 results returned
 ```
 
 The most popular API
@@ -82,7 +82,7 @@ The most popular API
 ```r
 # get most viewed articles in the last 7 days
 viewed <- ny_popular_viewed(7)
-#> ℹ 1727 results returned
+#> ℹ 1716 results returned
 ```
 
 The movie review API
@@ -118,4 +118,13 @@ Top stories API
 
 ```r
 business <- ny_stories("business")
+```
+
+Times wire API
+
+
+```r
+sections <- ny_wire_section_list()
+wires <- ny_wire_source(sample(sections$section, 1))
+#> ℹ 3298 results available
 ```
