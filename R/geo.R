@@ -55,7 +55,7 @@ ny_geo <- function(name = NULL, longitude = NULL, latitude = NULL, ne = NULL, sw
     page_content <- content(response)
     content <- append(content, list(page_content$results))
     results <- results + page_content$num_results
-    if(p > 1) Sys.sleep(6)
+    if(p > 1) Sys.sleep(12)
     p <- p + 1
   }
 

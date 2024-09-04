@@ -53,7 +53,7 @@ ny_book_list <- function(list, bestsellers_date = NULL, published_date = NULL, p
     page_content <- content(response)
     content <- append(content, list(page_content$results))
     results <- results + page_content$num_results
-    if(pages > 0) Sys.sleep(6)
+    if(pages > 0) Sys.sleep(12)
     p <- p + 1
   }
 
@@ -94,7 +94,7 @@ ny_book_date_list <- function(list, published_date = NULL, pages = 1){
     page_content <- content(response)
     content <- append(content, list(page_content$results))
     results <- results + page_content$num_results
-    if(p > 1) Sys.sleep(6)
+    if(p > 1) Sys.sleep(12)
     p <- p + 1
   }
 
@@ -211,7 +211,7 @@ ny_book_history <- function(age_group = NULL, author = NULL, contributor = NULL,
     page_content <- content(response)
     content <- append(content, list(page_content$results))
     results <- results + page_content$num_results
-    if(p > 1) Sys.sleep(6)
+    if(p > 1) Sys.sleep(12)
     p <- p + 1
   }
 

@@ -66,7 +66,7 @@ ny_search <- function(q, since = NULL, until = NULL, pages = 1, sort = c("newest
       cat(crayon::blue(cli::symbol$info), hits, "results available\n")
     } else {
       pb$tick()
-      Sys.sleep(6)
+      Sys.sleep(12)
     }
     
     if(offset >= hits)
