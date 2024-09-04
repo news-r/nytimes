@@ -76,7 +76,7 @@ ny_semantic_search <- function(q, pages = 1, fields = "all") {
     offset <- offset + 20
     if(p != 1) {
       pb$tick()
-      Sys.sleep(6)
+      Sys.sleep(12)
     } else {
       cat(crayon::blue(cli::symbol$info), page_content$num_results, "results available\n")
     }

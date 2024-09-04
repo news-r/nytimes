@@ -121,7 +121,7 @@ ny_movie_search <- function(q, picks = FALSE, pages = 1, opening_since = NULL, o
     offset <- offset + 20
     if(p != 1) {
       pb$tick()
-      Sys.sleep(6)
+      Sys.sleep(12)
     }
     
     if(!isTRUE(page_content$has_more))

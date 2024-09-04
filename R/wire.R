@@ -90,7 +90,7 @@ ny_wire_source <- function(section, pages = 1, source = c("all", "nyt", "iht")) 
     if(p == 0)
       cat(crayon::blue(cli::symbol$info), page_content$num_results, "results available\n")
     content <- append(content, list(page_content$results))
-    if(pages > 0) Sys.sleep(6)
+    if(pages > 0) Sys.sleep(12)
     p <- p + 1
     if(length(content) * 20  >= page_content$num_results)
       break
@@ -134,7 +134,7 @@ ny_wire_period <- function(section, period = 12, pages = 1, source = c("all", "n
     if(p == 0)
       cat(crayon::blue(cli::symbol$info), page_content$num_results, "results available\n")
     content <- append(content, list(page_content$results))
-    if(pages > 0) Sys.sleep(6)
+    if(pages > 0) Sys.sleep(12)
     p <- p + 1
     if(length(content) * 20  >= page_content$num_results)
       break
