@@ -50,7 +50,7 @@ ny_search <- function(q, since = NULL, until = NULL, pages = 1, sort = c("newest
   )
   
   content <- list()
-  for(p in 1:pages){
+  for(p in 0:pages){
     opts$page <- p
     parsed_url$query <- opts
     url <- build_url(parsed_url)
@@ -62,7 +62,7 @@ ny_search <- function(q, since = NULL, until = NULL, pages = 1, sort = c("newest
     # check if results left
     hits <- page_content$response$meta$hits
     offset <- page_content$response$meta$offset
-    if(p == 1){
+    if(p == 0){
       cat(crayon::blue(cli::symbol$info), hits, "results available\n")
     } else {
       pb$tick()
