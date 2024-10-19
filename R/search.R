@@ -44,38 +44,35 @@ ny_search <- function(q, since = NULL, until = NULL, pages = 1, sort = c("newest
   parsed_url <- parse_url(BASE_URL)
   parsed_url$path <- c("svc", "search", "v2", "articlesearch.json")
 
-  pb <- progress::progress_bar$new(
-    format = "  downloading [:bar] :percent",
-    total = pages - 1, clear = FALSE, width = 60
-  )
-  
   content <- list()
-  for(p in 0:pages){
+  for(p in 0:(pages-1)){
     opts$page <- p
     parsed_url$query <- opts
     url <- build_url(parsed_url)
     response <- GET(url)
     stop_for_status(response)
     page_content <- content(response)
-    content <- append(content, list(page_content))
+    content <- append(content, page_content$response$docs)
 
     # check if results left
     hits <- page_content$response$meta$hits
     offset <- page_content$response$meta$offset
     if(p == 0){
       cat(crayon::blue(cli::symbol$info), hits, "results available\n")
+      pages = min(pages, floor(hits / 10))
+      pb <- progress::progress_bar$new(
+          format = "  downloading [:bar] page :current/:total (:percent) :eta",
+          total = pages, clear = FALSE, width = 60
+      )
     } else {
-      pb$tick()
-      Sys.sleep(12)
+      if (!pb$finished) pb$tick()
+      Sys.sleep(13)
     }
     
-    if(offset >= hits)
+    if(p >= pages)
       break
   }
-
   pb$terminate()
 
-  content %>% 
-    map("response") %>% 
-    transpose()
+  content
 }
